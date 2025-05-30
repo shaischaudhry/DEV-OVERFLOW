@@ -1,6 +1,6 @@
 # DevOverflow - MERN Stack Overflow Clone
 
-A full-featured Stack Overflow clone built with the **MERN stack** (MongoDB, Express.js, React, Node.js) and **GraphQL**. This application demonstrates complete CRUD functionality, user authentication, real-time interactions, and modern web development practices.
+A full-featured Stack Overflow clone built with the **MERN stack** (MongoDB, Express.js, React, Node.js). This application demonstrates complete CRUD functionality, user authentication, real-time interactions, and modern web development practices.
 
 ## 🚀 Demo
 
@@ -10,16 +10,15 @@ Check out the `demo.mp4` file to see the application in action!
 
 ### Frontend
 - **React 17** - Component-based UI library
-- **Apollo Client** - GraphQL client for state management
+- **Apollo Client** - State management and API communication
 - **Material-UI** - Modern React component library
 - **React Router** - Client-side routing
 - **React Hook Form** - Form validation and handling
 
 ### Backend
 - **Node.js** - JavaScript runtime environment
-- **Apollo Server** - GraphQL server implementation
 - **Express.js** - Web application framework
-- **GraphQL** - Query language and API runtime
+- **Apollo Server** - API server implementation
 - **JWT** - JSON Web Token authentication
 
 ### Database
@@ -54,58 +53,22 @@ Check out the `demo.mp4` file to see the application in action!
 
 ## 🏗️ Architecture
 
-### GraphQL API Endpoints
+### API Endpoints
 
-#### Queries
-```graphql
-# Get paginated questions with filtering
-getQuestions(sortBy: SortByType!, page: Int!, limit: Int!, filterByTag: String, filterBySearch: String)
+#### Data Retrieval
+- Get paginated questions with filtering and sorting
+- Get single question with answers and comments
+- Get user profile and activity data
+- Get all available tags with counts
+- Get all users and top users by reputation
 
-# Get single question with answers and comments
-viewQuestion(quesId: ID!)
-
-# Get user profile and activity
-getUser(username: String!)
-
-# Get all available tags with counts
-getAllTags
-
-# Get all users
-getAllUsers
-
-# Get top users by reputation
-topUsers(limit: Int)
-```
-
-#### Mutations
-```graphql
-# User authentication
-register(username: String!, password: String!)
-login(username: String!, password: String!)
-
-# Question operations
-postQuestion(title: String!, body: String!, tags: [String!]!)
-editQuestion(quesId: ID!, title: String!, body: String!, tags: [String!]!)
-deleteQuestion(quesId: ID!)
-
-# Answer operations
-postAnswer(quesId: ID!, body: String!)
-editAnswer(quesId: ID!, ansId: ID!, body: String!)
-deleteAnswer(quesId: ID!, ansId: ID!)
-
-# Voting system
-voteQuestion(quesId: ID!, voteType: VoteType!)
-voteAnswer(quesId: ID!, ansId: ID!, voteType: VoteType!)
-
-# Answer acceptance
-acceptAnswer(quesId: ID!, ansId: ID!)
-
-# Comment system
-addComment(quesId: ID!, body: String!)
-addAnswerComment(quesId: ID!, ansId: ID!, body: String!)
-editComment(quesId: ID!, commentId: ID!, body: String!)
-deleteComment(quesId: ID!, commentId: ID!)
-```
+#### Data Operations
+- User authentication (register/login)
+- Question operations (create, edit, delete)
+- Answer operations (create, edit, delete)
+- Voting system for questions and answers
+- Answer acceptance functionality
+- Comment system for questions and answers
 
 ## 🗄️ Database Schema
 
@@ -171,7 +134,7 @@ npm start
 
 6. **Access the application**
 - Frontend: http://localhost:3000
-- GraphQL Playground: http://localhost:4000
+- Backend API: http://localhost:4000
 
 ## 📱 Usage
 
@@ -184,30 +147,13 @@ npm start
 
 ## 🔧 API Testing
 
-Use GraphQL Playground at `http://localhost:4000` to test queries and mutations:
-
-```graphql
-# Example: Get recent questions
-query {
-  getQuestions(sortBy: NEWEST, page: 1, limit: 5) {
-    questions {
-      id
-      title
-      author { username }
-      tags
-      points
-      views
-      createdAt
-    }
-  }
-}
-```
+The backend API is available at `http://localhost:4000` for testing and integration.
 
 ## 🤝 Contributing
 
 This project demonstrates modern full-stack development practices including:
 - Component-based architecture
-- GraphQL API design
+- RESTful API design
 - JWT authentication
 - Database modeling
 - Responsive UI/UX
